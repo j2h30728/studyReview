@@ -1,11 +1,10 @@
 import React from "react";
-import styles from "./App.module.css";
 
 export const Header = () => {
   return (
-    <header className={styles.header}>
+    <header>
       <h1>
-        <a href="/" id={styles.title}>
+        <a href="/" style={{ textDecoration: "none" }}>
           WEB
         </a>
       </h1>
