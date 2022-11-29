@@ -8,20 +8,15 @@ function App() {
       </header>
     );
   };
-  const Nav = () => {
+  const Nav = ({ topics }) => {
+    const liTag = topics.map(topic => (
+      <li key={topic.id}>
+        <a href={"/read/" + topic.id}>{topic.title}</a>
+      </li>
+    ));
     return (
       <nav>
-        <ul>
-          <li>
-            <a href="1.html">html</a>
-          </li>
-          <li>
-            <a href="2.html">css</a>
-          </li>
-          <li>
-            <a href="3.html">js</a>
-          </li>
-        </ul>
+        <ul>{liTag}</ul>
       </nav>
     );
   };
@@ -33,10 +28,16 @@ function App() {
       </article>
     );
   };
+
+  const topics = [
+    { id: 1, title: "html", body: "html is ..." },
+    { id: 2, title: "css", body: "css is ..." },
+    { id: 3, title: "js", body: "js is ..." },
+  ];
   return (
     <div>
       <Header title="웹" />
-      <Nav />
+      <Nav topics={topics} />
       <Article title="어서오세요!" body="웹의 세계로 초대합니다." />
     </div>
   );
