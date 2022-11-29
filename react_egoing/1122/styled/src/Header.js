@@ -1,7 +1,9 @@
 import React from "react";
+import "./App.css";
+
 export const Header = () => {
   return (
-    <header style={{ borderBottom: "1px solid gray" }}>
+    <header>
       <h1>
         <a href="/">WEB</a>
       </h1>
