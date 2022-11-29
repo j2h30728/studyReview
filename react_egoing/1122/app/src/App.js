@@ -43,7 +43,31 @@ const Article = ({ title, body }) => {
     </article>
   );
 };
+const Control = ({ onChangeMode }) => {
+  const createHandler = e => {
+    e.preventDefault();
+    onChangeMode("CREATE");
+  };
+  const updateHandler = e => {
+    e.preventDefault();
+    onChangeMode("UPDATE");
+  };
 
+  return (
+    <ul>
+      <li>
+        <a href="/create" onClick={createHandler}>
+          Create
+        </a>
+      </li>
+      <li>
+        <a href="/update" onClick={updateHandler}>
+          Update
+        </a>
+      </li>
+    </ul>
+  );
+};
 function App() {
   const [mode, setMode] = useState("WELCOME");
   const [id, setId] = useState(null);
@@ -64,12 +88,17 @@ function App() {
   } else if (mode === "READ") {
     const selected = topics.find(topic => topic.id === id);
     content = <Article title={selected.title} body={selected.body} />;
+  } else if (mode === "CREATE") {
+    content = <div>Create</div>;
+  } else if (mode === "UPDATE") {
+    content = <div>UPDATE</div>;
   }
   return (
     <div>
       <Header title="웹" onChangeMode={changeModeHadler} />
       <Nav topics={topics} onChangeMode={changeModeHadler} />
       {content}
+      <Control onChangeMode={changeModeHadler} />
     </div>
   );
 }
