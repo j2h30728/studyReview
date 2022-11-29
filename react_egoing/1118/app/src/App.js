@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const Header = ({ title, onChangeMode }) => {
   return (
     <header>
@@ -6,7 +8,7 @@ const Header = ({ title, onChangeMode }) => {
           href="index.html"
           onClick={evt => {
             evt.preventDefault();
-            onChangeMode();
+            onChangeMode("WELCOME");
           }}>
           {title}
         </a>
@@ -21,7 +23,7 @@ const Nav = ({ topics, onChangeMode }) => {
         href={"/read/" + topic.id}
         onClick={evt => {
           evt.preventDefault();
-          onChangeMode();
+          onChangeMode("READ");
         }}>
         {topic.title}
       </a>
@@ -44,26 +46,27 @@ const Article = ({ title, body }) => {
 };
 
 function App() {
+  const [mode, setMode] = useState("WELCOME");
   const topics = [
     { id: 1, title: "html", body: "html is ..." },
     { id: 2, title: "css", body: "css is ..." },
     { id: 3, title: "js", body: "js is ..." },
   ];
+  const changeHandler = mode => {
+    setMode(mode);
+  };
+
+  let content = null;
+  if (mode === "WELCOME") {
+    content = <Article title="Hello" body="Welcome, WEB!" />;
+  } else if (mode === "READ") {
+    content = <Article title="Read" body="Welcome, READ!" />;
+  }
   return (
     <div>
-      <Header
-        title="웹"
-        onChangeMode={() => {
-          alert("WELCOME");
-        }}
-      />
-      <Nav
-        topics={topics}
-        onChangeMode={() => {
-          alert("READ");
-        }}
-      />
-      <Article title="어서오세요!" body="웹의 세계로 초대합니다." />
+      <Header title="웹" onChangeMode={changeHandler} />
+      <Nav topics={topics} onChangeMode={changeHandler} />
+      {content}
     </div>
   );
 }
