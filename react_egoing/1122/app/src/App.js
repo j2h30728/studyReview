@@ -52,7 +52,6 @@ const Control = ({ onChangeMode }) => {
     e.preventDefault();
     onChangeMode("UPDATE");
   };
-
   return (
     <ul>
       <li>
@@ -68,19 +67,49 @@ const Control = ({ onChangeMode }) => {
     </ul>
   );
 };
+const Create = ({ onSave }) => {
+  const submitHandler = e => {
+    e.preventDefault();
+    const title = e.target.title.value;
+    const body = e.target.body.value;
+    onSave(title, body);
+  };
+  return (
+    <form onSubmit={submitHandler}>
+      <p>
+        <input type="txt" name="title" placeholder="title" />
+      </p>
+      <p>
+        <textarea name="body" placeholder="body" />
+      </p>
+      <p>
+        <input type="submit" value="Create" />
+      </p>
+    </form>
+  );
+};
 function App() {
   const [mode, setMode] = useState("WELCOME");
   const [id, setId] = useState(null);
-  const topics = [
+  const [nextId, setNextId] = useState(4);
+  const [topics, setTopics] = useState([
     { id: 1, title: "html", body: "html is ..." },
     { id: 2, title: "css", body: "css is ..." },
     { id: 3, title: "js", body: "js is ..." },
-  ];
+  ]);
   const changeModeHadler = (mode, id) => {
     setMode(mode);
     if (id !== undefined) {
       setId(id);
     }
+  };
+  const saveHandler = (title, body) => {
+    let newTopics = [...topics];
+    newTopics.push({ id: nextId, title, body });
+    setTopics(newTopics);
+    setMode("READ");
+    setId(nextId);
+    setNextId(oldNextId => oldNextId + 1);
   };
   let content = null;
   if (mode === "WELCOME") {
@@ -89,7 +118,7 @@ function App() {
     const selected = topics.find(topic => topic.id === id);
     content = <Article title={selected.title} body={selected.body} />;
   } else if (mode === "CREATE") {
-    content = <div>Create</div>;
+    content = <Create onSave={saveHandler} />;
   } else if (mode === "UPDATE") {
     content = <div>UPDATE</div>;
   }
