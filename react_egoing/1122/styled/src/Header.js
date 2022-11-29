@@ -1,11 +1,13 @@
 import React from "react";
-import "./App.css";
+import styles from "./App.module.css";
 
 export const Header = () => {
   return (
-    <header>
+    <header className={styles.header}>
       <h1>
-        <a href="/">WEB</a>
+        <a href="/" id={styles.title}>
+          WEB
+        </a>
       </h1>
     </header>
   );

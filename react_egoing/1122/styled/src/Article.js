@@ -1,9 +1,9 @@
 import React from "react";
-import "./App.css";
+import styles from "./App.module.css";
 
 export const Article = () => {
   return (
-    <article>
+    <article className={styles.article}>
       <h2>Welcome</h2>
       Hello, React!
     </article>

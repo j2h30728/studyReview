@@ -2,13 +2,14 @@ import React from "react";
 import { Header } from "./Header";
 import { Nav } from "./Nav";
 import { Article } from "./Article";
-import "./App.css";
+import styles from "./App.module.css";
 
 function App() {
+  console.log("style", styles);
   return (
     <div>
       <Header />
-      <div className="grid">
+      <div className={styles.grid}>
         <Nav />
         <Article />
       </div>

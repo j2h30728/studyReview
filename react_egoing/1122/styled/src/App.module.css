@@ -1,0 +1,17 @@
+.grid {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+}
+
+.header {
+  border-bottom: 3px solid blue;
+}
+
+.article {
+  border-left: 3px solid red;
+  padding-left: 1rem;
+}
+#title {
+  text-decoration: none;
+  color: brown;
+}
