@@ -23,7 +23,7 @@ const Nav = ({ topics, onChangeMode }) => {
         href={"/read/" + topic.id}
         onClick={evt => {
           evt.preventDefault();
-          onChangeMode("READ");
+          onChangeMode("READ", topic.id);
         }}>
         {topic.title}
       </a>
@@ -47,20 +47,25 @@ const Article = ({ title, body }) => {
 
 function App() {
   const [mode, setMode] = useState("WELCOME");
+  const [id, setId] = useState(null);
   const topics = [
     { id: 1, title: "html", body: "html is ..." },
     { id: 2, title: "css", body: "css is ..." },
     { id: 3, title: "js", body: "js is ..." },
   ];
-  const changeHandler = mode => {
+  const changeHandler = (mode, id) => {
     setMode(mode);
+    if (id !== undefined) {
+      setId(id);
+    }
   };
 
   let content = null;
   if (mode === "WELCOME") {
     content = <Article title="Hello" body="Welcome, WEB!" />;
   } else if (mode === "READ") {
-    content = <Article title="Read" body="Welcome, READ!" />;
+    const selected = topics.find(topic => topic.id === id);
+    content = <Article title={selected.title} body={selected.body} />;
   }
   return (
     <div>
