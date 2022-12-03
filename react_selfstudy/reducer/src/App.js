@@ -12,24 +12,37 @@ const reducer = (state, action) => {
       const newStudent = {
         id: Date.now(),
         name,
-        isHeere: true,
+        isHere: false,
       };
       return {
         count: state.count + 1,
         students: [...state.students, newStudent],
       };
+    case "delete-student":
+      return {
+        count: state.count - 1,
+        students: state.students.filter(
+          (student) => student.id !== action.payload.id
+        ),
+      };
+    case "mark-student":
+      return {
+        count: state.count,
+        students: state.students.map((student) => {
+          if (student.id === action.payload.id) {
+            return { ...student, isHere: !student.isHere };
+          }
+          return student;
+        }),
+      };
+    default:
+      return state;
   }
 };
 
 const initialState = {
   count: 0,
-  students: [
-    {
-      id: Date.now(),
-      name: "James",
-      isHere: false,
-    },
-  ],
+  students: [],
 };
 
 function App() {
@@ -54,7 +67,15 @@ function App() {
         추가
       </button>
       {studentInfro.students.map((student) => {
-        return <Student key={student.id} name={student.name} />;
+        return (
+          <Student
+            key={student.id}
+            name={student.name}
+            dispatch={dispatch}
+            id={student.id}
+            isHere={student.isHere}
+          />
+        );
       })}
     </div>
   );
