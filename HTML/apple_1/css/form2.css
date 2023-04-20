@@ -1,0 +1,48 @@
+div,
+input,
+textarea {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.form-background {
+  background-color: black;
+  padding: 30px;
+}
+.form-white {
+  background-color: white;
+  padding: 30px;
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+  /* 가운데 정렬용 */
+}
+.form-input {
+  width: 100%;
+  /* 실제 width는 100% + 20px => boorderbox 적용 */
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.w-50 {
+  width: 50%;
+  float: left;
+  padding: 10px;
+}
+.w-100 {
+  width: 100%;
+  padding: 10px;
+}
+.form-long {
+  height: 150px;
+}
+.yellow-button {
+  padding: 10px;
+  display: block;
+  margin-left: auto;
+  /* 오른쪽 정렬됨 */
+}

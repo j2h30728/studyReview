@@ -1,0 +1,44 @@
+.container {
+  width: 800px;
+  height: 100%;
+  margin: 0 auto;
+}
+.blog-content {
+  width: 80%;
+  height: 200px;
+  background-color: skyblue;
+  float: left;
+}
+.blog-img {
+  width: 20%;
+  height: 200px;
+  background-color: yellow;
+  float: left;
+}
+.blog-profile {
+  width: 50px;
+  float: left;
+}
+.blog-name {
+  float: left;
+}
+.title {
+  font-weight: 800;
+  font-size: 20px;
+}
+
+img {
+  width: 100%;
+}
+
+.navbar > li {
+  display: inline-block;
+  margin: 0 10px;
+  background-color: blanchedalmond;
+  padding: 10px;
+  border-radius: 10px;
+}
+.navbar a {
+  text-decoration: none;
+  color: black;
+}

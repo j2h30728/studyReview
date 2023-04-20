@@ -1,0 +1,59 @@
+.main-background {
+  width: 100%;
+  height: 500px;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.2)
+    ),
+    url(/img/shoes.jpeg);
+  background-size: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 30px;
+}
+.main-title {
+  text-align: center;
+  margin: 100px 0 30px 0;
+  color: white;
+  font-size: 70px;
+}
+.main-content {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+.main-button {
+  font-size: 25px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-radius: 5px;
+  display: block;
+  margin: 80px auto;
+  padding: 10px 15px;
+  cursor: pointer;
+  box-shadow: 1px 1px 10px 1px rgba(250, 250, 250, 0.5);
+}
+
+.sub-content {
+  background-color: rgb(224, 224, 224);
+  width: 80%;
+  /* 현재 부모태그 : body */
+  max-width: 700px;
+  /* 최대폭지정 , 700px 이상은 커지지않음 */
+  height: 200px;
+  position: relative;
+  top: -80px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  text-align: center;
+  color: rgb(15, 13, 13);
+  box-sizing: border-box;
+}
+.sub-title {
+  font-size: 25px;
+}
+.sub-content p {
+  font-size: 18px;
+}
